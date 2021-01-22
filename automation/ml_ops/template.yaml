@@ -6,16 +6,6 @@ Globals:
   Function:
     Timeout: 300
 
-Parameters:
-  Email:
-    Type: String
-    Description: Email to be notified
-    Default: youremail@yourprovider.com
-  ParameterFile:
-    Type: String
-    Description: Parameters file name, which will reside in your S3 parent directory
-    Default: params.json
-
 Resources:
 
 # ------------------------
@@ -71,7 +61,7 @@ Resources:
       Environment:
         Variables:
           STEP_FUNCTIONS_ARN: !Ref DeployStateMachine
-          PARAMS_FILE: !Ref ParameterFile
+          PARAMS_FILE: "params.json"
       Events:
         S3Bucket:
           Type: S3
@@ -82,7 +72,7 @@ Resources:
               S3Key:
                 Rules:
                 - Name: prefix
-                  Value: !Ref ParameterFile
+                  Value: "params.json"
   TriggerRole:
     Type: AWS::IAM::Role
     Properties:
@@ -114,53 +104,6 @@ Resources:
                   - logs:PutLogEvents
                 Resource: arn:aws:logs:*:*:*
 # ------------------------
-# SNS Topic
-# ------------------------
-  NotificationTopic:
-    Metadata:
-      cfn_nag:
-        rules_to_suppress:
-          - id: W47
-            reason: "SNS will not be encrypted for the porpose of this block"
-    Type: AWS::SNS::Topic
-    Properties:
-      DisplayName: StepsTopic
-      Subscription:
-        - Endpoint: !Ref Email
-          Protocol: email
-  Notify:
-    Type: AWS::Serverless::Function
-    Properties:
-      CodeUri: lambdas/notify/
-      Handler: notify.lambda_handler
-      Runtime: python3.7
-      Environment:
-        Variables:
-          SNS_TOPIC_ARN: !Ref NotificationTopic
-      Policies:
-        - Version: "2012-10-17"
-          Statement:
-            - Effect: Allow
-              Action:
-                - sns:Publish
-              Resource: "*"
-  NotifyDelete:
-    Type: AWS::Serverless::Function
-    Properties:
-      CodeUri: lambdas/notify-delete/
-      Handler: notify-delete.lambda_handler
-      Runtime: python3.7
-      Environment:
-        Variables:
-          SNS_TOPIC_ARN: !Ref NotificationTopic
-      Policies:
-        - Version: "2012-10-17"
-          Statement:
-            - Effect: Allow
-              Action:
-                - sns:Publish
-              Resource: "*"            
-# ------------------------
 # Custom Shared Layer
 # ------------------------
   SharedLayer:
@@ -174,6 +117,21 @@ Resources:
 # ------------------------
 # Create Steps Definition
 # ------------------------
+
+Notify:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: lambdas/notify/
+      Handler: notify.lambda_handler
+      Runtime: python3.7
+
+  NotifyDelete:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: lambdas/notify-delete/
+      Handler: notify-delete.lambda_handler
+      Runtime: python3.7
+
   StatesExecutionRole:
     Type: AWS::IAM::Role
     Properties:
@@ -1366,7 +1324,3 @@ Outputs:
   InputBucketName:
     Description: The S3 bucket name
     Value: !Ref InputBucket
-  NotificationTopicArn:
-    Description: The Notification Topic Arn
-    Value: !Ref NotificationTopic
-  

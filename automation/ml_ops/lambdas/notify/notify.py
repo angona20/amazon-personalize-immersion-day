@@ -1,6 +1,5 @@
 import os
 from boto3 import client
-SNS = client('sns')
 
 def get_message(event):
     if 'statesError' in event.keys():
@@ -10,6 +9,10 @@ def get_message(event):
     return 'Your Personalize Endpoint is ready!'
 
 def lambda_handler(event, context):
-    return SNS.publish(
-        TopicArn=os.environ['SNS_TOPIC_ARN'], Message=get_message(event)
-    )
+    print("NOTIFY FUNCTION LOG --------")
+    
+    print(event)
+    
+    print("NOTIFY FUNCTION LOG END --------")
+    
+    return True
