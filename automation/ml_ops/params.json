@@ -1,6 +1,6 @@
 {
    "datasetGroup":{
-      "name":"MovieLensDemo"
+      "name":"AmazonPersonalizeImmersionDay"
    },
    "datasets":{
       "Interactions":{
@@ -70,7 +70,7 @@
       }
    },
    "eventTracker":{
-      "name":"MovieLensDemoEventTracker"
+      "name":"AmazonPersonalizeImmersionDayEventTracker"
    },
    "campaigns":{
       "userPersonalizationCampaign":{
