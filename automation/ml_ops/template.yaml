@@ -118,7 +118,7 @@ Resources:
 # Create Steps Definition
 # ------------------------
 
-Notify:
+  Notify:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: lambdas/notify/
