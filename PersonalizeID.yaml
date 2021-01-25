@@ -4,10 +4,9 @@ AWSTemplateFormatVersion: '2010-09-09'
 Description: Creates an S3 Bucket, IAM Policies, and SageMaker Notebook to work with Personalize.
 
 Parameters:
-
   NotebookName:
     Type: String
-    Default: PersonalizeImmersionDay
+    Default: APersonalizeImmersionDay2
     Description: Enter the name of the SageMaker notebook instance. Default is PersonalizeImmersionDay.
 
   VolumeSize:
@@ -19,6 +18,8 @@ Parameters:
     Description: Enter the size of the EBS volume in GB.
 
 Resources:
+  SAMArtifactsBucket:
+    Type: AWS::S3::Bucket
   # SageMaker Execution Role
   SageMakerIamRole:
     Type: "AWS::IAM::Role"
@@ -33,10 +34,16 @@ Resources:
             Action: sts:AssumeRole
       Path: "/"
       ManagedPolicyArns:
-        - "arn:aws:iam::aws:policy/AmazonSageMakerFullAccess"
-        - "arn:aws:iam::aws:policy/AmazonS3FullAccess"
-        - "arn:aws:iam::aws:policy/service-role/AmazonPersonalizeFullAccess"
         - "arn:aws:iam::aws:policy/IAMFullAccess"
+        - "arn:aws:iam::aws:policy/AWSCloudFormationFullAccess"
+        - "arn:aws:iam::aws:policy/AmazonS3FullAccess"
+        - "arn:aws:iam::aws:policy/AmazonSageMakerFullAccess"
+        - "arn:aws:iam::aws:policy/AWSStepFunctionsFullAccess"
+        - "arn:aws:iam::aws:policy/AWSLambda_FullAccess"
+        - "arn:aws:iam::aws:policy/AmazonSNSFullAccess"
+        - "arn:aws:iam::aws:policy/service-role/AmazonPersonalizeFullAccess"
+        
+        
 
   # SageMaker notebook
   NotebookInstance:
@@ -46,7 +53,6 @@ Resources:
       NotebookInstanceName: !Ref NotebookName
       RoleArn: !GetAtt SageMakerIamRole.Arn
       VolumeSizeInGB: !Ref VolumeSize
-      DefaultCodeRepository: https://github.com/luseloso/personalize-immersion-day.git
       LifecycleConfigName: !GetAtt AmazonPersonalizeMLOpsLifecycleConfig.NotebookInstanceLifecycleConfigName
 
 
@@ -58,15 +64,8 @@ Resources:
             Fn::Base64: 
               !Sub |
                 #!/bin/bash
-                # cd /home/ec2-user/SageMaker/amazon-personalize-immersion-day/automation/ml_ops/
-                # sam deploy template.yaml
-                
-                # sudo -u ec2-user -i <<'EOF'
-                # source /home/ec2-user/anaconda3/bin/activate python3
-                # pip install --upgrade pymongo
-                # pip install --upgrade xgboost
-                # source /home/ec2-user/anaconda3/bin/deactivate
-                # cd /home/ec2-user/SageMaker
-                # wget https://s3.amazonaws.com/rds-downloads/rds-combined-ca-bundle.pem
-                # wget https://raw.githubusercontent.com/aws-samples/documentdb-sagemaker-example/main/script.ipynb
-                EO
+                sudo -u ec2-user -i <<'EOF'
+                git clone https://github.com/luseloso/amazon-personalize-immersion-day.git
+                cd /home/ec2-user/SageMaker/amazon-personalize-immersion-day/automation/ml_ops/
+                nohup bash -x deploy.sh > file.log
+                EOF
