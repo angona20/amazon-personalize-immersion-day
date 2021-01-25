@@ -68,5 +68,5 @@ Resources:
                 cd /home/ec2-user/SageMaker/
                 git clone https://github.com/luseloso/amazon-personalize-immersion-day.git
                 cd /home/ec2-user/SageMaker/amazon-personalize-immersion-day/automation/ml_ops/
-                nohup bash -x deploy.sh "${SAMArtifactsBucket}"
+                nohup sh deploy.sh "${SAMArtifactsBucket}" &
                 EOF
