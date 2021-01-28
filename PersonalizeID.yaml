@@ -16,6 +16,12 @@ Parameters:
     MaxValue: 16384
     ConstraintDescription: Must be an integer between 5 (GB) and 16384 (16 TB).
     Description: Enter the size of the EBS volume in GB.
+    
+  domain:
+    Type: String
+    Default: Media
+    Description: Enter the name of the domain (Retail, Media, or CPG) you would like to use in your Amazon Personalize Immersion Day.
+
 
 Resources:
   SAMArtifactsBucket:
@@ -68,5 +74,5 @@ Resources:
                 cd /home/ec2-user/SageMaker/
                 git clone https://github.com/luseloso/amazon-personalize-immersion-day.git
                 cd /home/ec2-user/SageMaker/amazon-personalize-immersion-day/automation/ml_ops/
-                nohup sh deploy.sh "${SAMArtifactsBucket}" &
+                nohup sh deploy.sh "${SAMArtifactsBucket}" "${domain}" &
                 EOF

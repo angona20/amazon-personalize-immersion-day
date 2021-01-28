@@ -1,0 +1,57 @@
+ITEM_ID,CATEGORY,TYPE,SIZE,SUGAR
+1,beers,beer,4x355,REGULAR
+2,beers,beer,4x330,REGULAR
+3,sparkling,soda,6x3000,REGULAR
+4,waters,sparkling,6x1500,0%
+5,juices,juice,1x1000,0%
+6,isotonic,post-workout,6x1000,0%
+7,other,soja,1x1000,REGULAR
+8,beers,beer,12x355,REGULAR
+9,beers,beer,12x355,REGULAR
+10,spirits,pisco,1x750,REGULAR
+11,sparkling,soda,6x3000,REGULAR
+12,waters,normal,6x1500,0%
+13,juices,nectar,6x1500,0%
+14,isotonic,post-workout,6x1000,REGULAR
+15,other,coconut water,1x1000,0%
+16,spirits,pisco,1x750,REGULAR
+17,spirits,rum,1x700,REGULAR
+18,spirits,whisky,1x750,REGULAR
+19,sparkling,soda,6x3000,REGULAR
+20,waters,flavored,6x1500,0%
+21,juices,nectar,1x1000,0%
+22,energy,pre-workout,6x473,0%
+23,other,tea,16 bags,0%
+24,sparkling,soda,6x3000,0%
+25,energy,pre-workout,6x473,REGULAR
+26,juices,nectar,6x1750,LOW
+27,sparkling,soda,6x3000,0%
+28,waters,sparkling,6x1600,0%
+29,juices,nectar,6x1750,LOW
+30,energy,pre-workout,6x473,0%
+31,other,tea,16 bags,0%
+32,juices,juice,1x1000,0%
+33,other,tea,16 bags,0%
+34,sparkling,soda,6x3000,0%
+35,sparkling,soda,6x3000,REGULAR
+36,sparkling,soda,6x3000,0%
+37,juices,juice,1x1000,0%
+38,isotonic,post-workout,6x600,REGULAR
+39,other,soja,1x1000,REGULAR
+40,waters,normal,6x1600,0%
+41,waters,flavored,1x1600,0%
+42,sparkling,soda,6x3000,0%
+43,sparkling,tonic,6x1500,REGULAR
+44,waters,flavored,1x1600,0%
+45,juices,nectar,6x200,0%
+46,isotonic,post-workout,6x600,0%
+47,other,soja,1x1000,REGULAR
+48,isotonic,post-workout,6x600,0%
+49,juices,nectar,6x200,LOW
+50,waters,flavored,4x500,REGULAR
+51,isotonic,post-workout,6x600,REGULAR
+52,other,coconut water,1x500,0%
+53,sparkling,soda,6x3000,0%
+54,waters,flavored,4x500,REGULAR
+55,juices,nectar,6x200,LOW
+56,other,coconut water,1x250,0%
