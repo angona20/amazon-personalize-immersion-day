@@ -10,23 +10,28 @@
                 "name":"Interactions",
                 "namespace":"com.amazonaws.personalize.schema",
                 "fields":[
-                    {
-                       "name":"USER_ID",
-                       "type":"string"
-                    },
-                    {
-                       "name":"ITEM_ID",
-                       "type":"string"
-                    },
-                    {
-                       "name":"EVENT_TYPE",
-                       "type":"string"
-                    },
-                    {
-                       "name":"TIMESTAMP",
-                       "type":"long"
-                    }
-                ],
+                  {
+                      "name": "ITEM_ID",
+                      "type": "string"
+                  },
+                  {
+                      "name": "USER_ID",
+                      "type": "string"
+                  },
+                  {
+                      "name": "EVENT_TYPE",
+                      "type": "string"
+                  },
+                  {
+                      "name": "TIMESTAMP",
+                      "type": "long"
+                  },
+                  {
+                      "name": "ITEM_SUGAR_LEVEL",
+                      "type": "string",
+                      "categorical": True
+                  }
+              ],
                 "version":"1.0"
           }
       },
@@ -37,23 +42,58 @@
             "name":"Items",
             "namespace":"com.amazonaws.personalize.schema",
             "fields":[
-                {
-                   "name":"ITEM_ID",
-                   "type":"string"
-                },
-                {
-                   "name":"GENRE",
-                   "type":"string",
-                   "categorical":true
-                },
-                {
-                   "name":"YEAR",
-                   "type":"int"
-                }
-            ],
+               {
+                   "name": "ITEM_ID",
+                   "type": "string"
+               },
+               {
+                   "name": "CATEGORY",
+                   "type": "string",
+                   "categorical": True
+               },
+               {
+                   "name": "TYPE",
+                   "type": "string",
+                   "categorical": True
+               },
+               {
+                   "name": "SIZE",
+                   "type": "string",
+                   "categorical": True
+               },
+               {
+                   "name": "SUGAR",
+                   "type": "string",
+                   "categorical": True
+               }
+           ],
             "version":"1.0"
           }
-      }
+      },
+      "Users":{
+         "name":"UsersDataset",
+         "schema":{
+           "type":"record",
+           "name":"Users",
+           "namespace":"com.amazonaws.personalize.schema",
+           "fields":[
+            {
+                "name": "USER_ID",
+                "type": "string"
+            },
+            {
+                "name": "AGE",
+                "type": "int"
+            },
+            {
+                "name": "GENDER",
+                "type": "string",
+                "categorical": True
+            }
+        ],
+           "version":"1.0"
+         }
+     }
    },
    "solutions":{
       "userPersonalization":{
