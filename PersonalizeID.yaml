@@ -6,7 +6,7 @@ Description: Creates an S3 Bucket, IAM Policies, and SageMaker Notebook to work 
 Parameters:
   NotebookName:
     Type: String
-    Default: APersonalizeImmersionDay2
+    Default: AmazonPersonalizeImmersionDay2
     Description: Enter the name of the SageMaker notebook instance. Default is PersonalizeImmersionDay.
 
   VolumeSize:
