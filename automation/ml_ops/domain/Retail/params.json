@@ -55,7 +55,7 @@
             "version":"1.0"
           }
       },
-      "Items":{
+      "Users":{
           "name":"UsersDataset-AmazonPersonalizeImmersionDay-Retail-Automation",
           "schema":{
             "type":"record",
