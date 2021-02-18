@@ -1,10 +1,10 @@
 {
    "datasetGroup":{
-      "name":"AmazonPersonalizeImmersionDay-Retail-Automation"
+      "name":"APID-Retail-Automation"
    },
    "datasets":{
       "Interactions":{
-          "name":"InteractionsDataset-AmazonPersonalizeImmersionDay-Retail-Automation",
+          "name":"InteractionsDataset-APID-Retail-Automation",
           "schema":{
                 "type":"record",
                 "name":"Interactions",
@@ -31,7 +31,7 @@
           }
       },
       "Items":{
-          "name":"ItemsDataset-AmazonPersonalizeImmersionDay-Retail-Automation",
+          "name":"ItemsDataset-APID-Retail-Automation",
           "schema":{
             "type":"record",
             "name":"Items",
@@ -56,7 +56,7 @@
           }
       },
       "Users":{
-          "name":"UsersDataset-AmazonPersonalizeImmersionDay-Retail-Automation",
+          "name":"UsersDataset-APID-Retail-Automation",
           "schema":{
             "type":"record",
             "name":"Users",
@@ -82,32 +82,32 @@
    },
    "solutions":{
       "userPersonalization":{
-         "name":"userPersonalizationSolution-AmazonPersonalizeImmersionDay-Retail-Automation",
+         "name":"userPersonalizationSolution-APID-Retail-Automation",
          "recipeArn":"arn:aws:personalize:::recipe/aws-user-personalization"
       },
       "sims":{
-         "name":"simsSolution-AmazonPersonalizeImmersionDay-Retail-Automation",
+         "name":"simsSolution-APID-Retail-Automation",
          "recipeArn":"arn:aws:personalize:::recipe/aws-sims"
       },
       "personalizedRanking":{
-         "name":"personalizedRankingSolution-AmazonPersonalizeImmersionDay-Retail-Automation",
+         "name":"personalizedRankingSolution-APID-Retail-Automation",
          "recipeArn":"arn:aws:personalize:::recipe/aws-personalized-ranking"
       }
    },
    "eventTracker":{
-      "name":"EventTracker-AmazonPersonalizeImmersionDay-Retail-Automation"
+      "name":"EventTracker-APID-Retail-Automation"
    },
    "campaigns":{
       "userPersonalizationCampaign":{
-         "name":"userPersonalizationCampaign-AmazonPersonalizeImmersionDay-Retail-Automation",
+         "name":"userPersonalizationCampaign-APID-Retail-Automation",
          "minProvisionedTPS":1
       },
       "simsCampaign":{
-         "name":"simsCampaign-AmazonPersonalizeImmersionDay-Retail-Automation",
+         "name":"simsCampaign-APID-Retail-Automation",
          "minProvisionedTPS":1
       },
       "personalizedRankingCampaign":{
-         "name":"personalizedRankingCampaign-AmazonPersonalizeImmersionDay-Retail-Automation",
+         "name":"personalizedRankingCampaign-APID-Retail-Automation",
          "minProvisionedTPS":1
       }
    }
