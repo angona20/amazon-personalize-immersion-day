@@ -1,10 +1,10 @@
 {
    "datasetGroup":{
-      "name":"AmazonPersonalizeImmersionDay"
+      "name":"AmazonPersonalizeImmersionDay-Retail-Automation"
    },
    "datasets":{
       "Interactions":{
-          "name":"InteractionsDataset",
+          "name":"InteractionsDataset-AmazonPersonalizeImmersionDay-Retail-Automation",
           "schema":{
                 "type":"record",
                 "name":"Interactions",
@@ -31,7 +31,7 @@
           }
       },
       "Items":{
-          "name":"ItemsDataset",
+          "name":"ItemsDataset-AmazonPersonalizeImmersionDay-Retail-Automation",
           "schema":{
             "type":"record",
             "name":"Items",
@@ -42,13 +42,38 @@
                    "type":"string"
                 },
                 {
-                   "name":"GENRE",
+                   "name":"CATEGORY",
                    "type":"string",
                    "categorical":true
                 },
                 {
-                   "name":"YEAR",
-                   "type":"int"
+                   "name":"STYLE",
+                   "type":"string",
+                   "categorical":true
+                }
+            ],
+            "version":"1.0"
+          }
+      },
+      "Items":{
+          "name":"UsersDataset-AmazonPersonalizeImmersionDay-Retail-Automation",
+          "schema":{
+            "type":"record",
+            "name":"Users",
+            "namespace":"com.amazonaws.personalize.schema",
+            "fields":[
+                {
+                   "name":"USER_ID",
+                   "type":"string"
+                },
+                {
+                   "name":"AGE",
+                   "type":"int",
+                },
+                {
+                   "name":"GENDER",
+                   "type":"string",
+                   "categorical":true
                 }
             ],
             "version":"1.0"
@@ -57,32 +82,32 @@
    },
    "solutions":{
       "userPersonalization":{
-         "name":"userPersonalizationSolution",
+         "name":"userPersonalizationSolution-AmazonPersonalizeImmersionDay-Retail-Automation",
          "recipeArn":"arn:aws:personalize:::recipe/aws-user-personalization"
       },
       "sims":{
-         "name":"simsSolution",
+         "name":"simsSolution-AmazonPersonalizeImmersionDay-Retail-Automation",
          "recipeArn":"arn:aws:personalize:::recipe/aws-sims"
       },
       "personalizedRanking":{
-         "name":"personalizedRankingSolution",
+         "name":"personalizedRankingSolution-AmazonPersonalizeImmersionDay-Retail-Automation",
          "recipeArn":"arn:aws:personalize:::recipe/aws-personalized-ranking"
       }
    },
    "eventTracker":{
-      "name":"AmazonPersonalizeImmersionDayEventTracker"
+      "name":"EventTracker-AmazonPersonalizeImmersionDay-Retail-Automation"
    },
    "campaigns":{
       "userPersonalizationCampaign":{
-         "name":"userPersonalizationCampaign",
+         "name":"userPersonalizationCampaign-AmazonPersonalizeImmersionDay-Retail-Automation",
          "minProvisionedTPS":1
       },
       "simsCampaign":{
-         "name":"simsCampaign",
+         "name":"simsCampaign-AmazonPersonalizeImmersionDay-Retail-Automation",
          "minProvisionedTPS":1
       },
       "personalizedRankingCampaign":{
-         "name":"personalizedRankingCampaign",
+         "name":"personalizedRankingCampaign-AmazonPersonalizeImmersionDay-Retail-Automation",
          "minProvisionedTPS":1
       }
    }
