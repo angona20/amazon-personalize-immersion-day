@@ -68,7 +68,7 @@
                 },
                 {
                    "name":"AGE",
-                   "type":"int",
+                   "type":"int"
                 },
                 {
                    "name":"GENDER",
